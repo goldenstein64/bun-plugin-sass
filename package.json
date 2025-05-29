@@ -1,0 +1,14 @@
+{
+  "name": "@goldenstein64/bun-plugin-sass",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.5.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "sass-embedded": "^1.89.0"
+  }
+}
