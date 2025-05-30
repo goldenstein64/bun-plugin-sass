@@ -1,30 +1,37 @@
 # bun-plugin-sass
 
-A Bun plugin for loading `.sass` and `.scss` files.
+A very small Bun plugin for bundling compiled `.sass` and `.scss` files with your builds.
 
 ## Usage
 
-There are two variants of this plugin:
-- `preload`: for importing JS source
-- `serve-static`: for serving CSS statically with the bundler.
+Pass the plugin into `Bun.build` or your `bunfig.toml`.
 
-You can set them both up from `bunfig.toml` or the `Bun.build` API.
+```ts
+// build.ts
+await Bun.build({
+    // ...
+    plugins: ["@goldenstein64/bun-plugin-sass"]
+})
+```
 
 ```toml
-preload = ["@goldenstein64/bun-plugin-sass/preload"]
-
+# bunfig.toml
 [serve.static]
-plugins = ["@goldenstein64/bun-plugin-sass/serve-static"]
+plugins = ["@goldenstein64/bun-plugin-sass"]
 ```
 
-You will also need to add the `sass.d.ts` file to your `tsconfig.json`:
+Now, any references to `.sass` and `.scss` files in the server or HTML will reference ordinary CSS.
 
-```jsonc
-{
-    // add it to your "include" files
-    "include": [".", "node_modules/@goldenstein64/bun-plugin-sass/sass.d.ts"]
-}
+```html
+<link type="stylesheet" src="style.scss">
+
+<!-- becomes -->
+
+<link type="stylesheet" src="style-[hash].css">
 ```
+
+Please note that importing these files from client-side JS does not work; it causes errors and crashes on Bun's side for reasons unbeknownst.
+
 
 ## Building
 
