@@ -1,4 +1,0 @@
-preload = ["./preload.ts"]
-
-[serve.static]
-plugins = ["./serve-static.ts"]
