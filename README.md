@@ -1,5 +1,8 @@
 # bun-plugin-sass
 
+> [!WARNING]
+> Use `esbuild-sass-plugin` instead
+
 A very small Bun plugin for bundling compiled `.sass` and `.scss` files with your builds.
 
 ## Usage
